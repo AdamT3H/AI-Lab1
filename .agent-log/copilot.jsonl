@@ -1,0 +1,2 @@
+{"ts":"2026-09-16T20:26:02.465Z","tool":"view","input":{"path":"/Users/adamogorodnik/AI-Lab1/package.json"},"result":"ok","session":"da8aae1e-e593-4cab-a70c-3332f1521794","source":"copilot"}
+{"ts":"2026-09-16T20:26:17.895Z","tool":"bash","input":{"command":"npm test"},"result":"ok","session":"da8aae1e-e593-4cab-a70c-3332f1521794","source":"copilot"}

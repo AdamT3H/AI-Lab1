@@ -1,0 +1,1 @@
+{"ts":"2026-09-16T20:25:59.963Z","tool":"Bash","input":{"command":"sed -n '1,220p' package.json && npm test"},"result":"ok","session":"01a0abe4-772f-7893-becc-37791603e245","source":"codex"}
