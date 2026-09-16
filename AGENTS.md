@@ -29,7 +29,6 @@ Logging vehicle mileage to resell it with clear history. AI can see strange mile
 - Editing any data in DB
 
 ## Домовленості
-
 - Model selected by role from `src/models.ts` (`MODELS.cheap`), not a raw string ID.
 - Prices and model deprecation dates are checked against the vendor page, not memory.
 - Commit format: `type: description` (feat, fix, docs, test, refactor).
