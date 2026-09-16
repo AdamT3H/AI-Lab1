@@ -1,47 +1,35 @@
-<!-- AGENTS.md — карта проєкту для агента. Цей файл пише ЛЮДИНА, не агент. -->
-<!-- Правила курсу:                                                          -->
-<!--  * тиждень 1 — до 60 рядків; до кінця курсу — до 200;                   -->
-<!--  * кожен рядок відповідає на питання «що агент зробить неправильно,     -->
-<!--    якщо цього рядка не буде?». Не відповідає — рядок видалити;          -->
-<!--  * тест на якість: видали 40% рядків — робота агента не ламається;      -->
-<!--  * не переказувати README: README — для людей, AGENTS.md — для агента.  -->
-<!--  * це карта, а не енциклопедія: посилайся на файл, не копіюй його вміст.-->
-
 # AGENTS.md
+Logging vehicle mileage to resell it with clear history. AI can see strange mileage change.
 
-<!-- TODO: один рядок — що це за проєкт і для кого. Без маркетингу. -->
-
-## Стек
-
+## Stec
 - TypeScript (`strict`), Next.js (App Router), Vitest.
+- DB (Supabase (Postgres)).
+- Separate CSS files only.
 
-<!-- TODO: те, що агент НЕ вгадає з package.json: версія Node, менеджер пакетів,
-     БД/ORM, спосіб стилізації, шлюз до моделей. -->
+## Commands
+- `npm test` — tests (Vitest), no network calls.
+- `npm run typecheck` — type checking, no emit.
+- `npm run lint` — linter.
+- `npm run dev -- -H 0.0.0.0` — dev server accessible from local network.
 
-## Команди
-
-- `npm test` — тести (Vitest), без мережі.
-- `npm run typecheck` — перевірка типів, без емісії.
-- `npm run lint` — лінтер.
-
-<!-- TODO: дев-сервер, збірка, міграції — якщо їх не видно з package.json. -->
-<!-- TODO: познач, що саме агент зобов'язаний запустити ПЕРЕД тим,
-     як звітувати «готово». -->
+## Before reporting "done"
+- `npm run typecheck`, `npm test`, `npm run lint`, `npm run build` must all pass — show output.
 
 ## Межі
+- Never read or edit `.env` / `.env.local` — secrets are managed by a human.
+- Tests must not hit the network or call paid APIs.
+- Never edit package-lock.json manually.
+- Never edit existing files in supabase/migrations/, only add new files, if a allow
+- dont remove enithing from .gitignore
+- dont fix failing test to make it pass, first explain to me what was the problem.
 
-- `.env` і `.env.local` агент не читає і не редагує: секрети веде людина.
-- Тести не ходять у мережу і не викликають платні API.
-
-<!-- TODO: теки й файли, які агент не чіпає (згенерований код, міграції, лок-файли). -->
-<!-- TODO: дії, що потребують підтвердження людини (git push, зміна залежностей,
-     видалення даних, витрати понад ліміт). -->
+## Requires human approval
+- git push
+- Adding or removing npm dependencies
+- Editing any data in DB
 
 ## Домовленості
 
-- Модель обирається роллю з `src/models.ts` (`MODELS.cheap`), а не рядком-ідентифікатором.
-- Ціни й дати зняття моделей звіряються зі сторінкою вендора, а не з пам'яті.
-
-<!-- TODO: правила стилю, яких не ловить лінтер (іменування, межі модулів). -->
-<!-- TODO: формат повідомлень комітів. -->
-<!-- TODO: визначення «готово»: які перевірки мають бути зеленими. -->
+- Model selected by role from `src/models.ts` (`MODELS.cheap`), not a raw string ID.
+- Prices and model deprecation dates are checked against the vendor page, not memory.
+- Commit format: `type: description` (feat, fix, docs, test, refactor).
