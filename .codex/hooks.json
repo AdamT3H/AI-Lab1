@@ -1,11 +1,18 @@
 {
-    "hooks": {
-      "PostToolUse": [
-        {
-          "hooks": [
-            { "type": "command", "command": "node scripts/agent-log-hook.mjs codex", "timeout": 10 }
-          ]
-        }
-      ]
-    }
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node scripts/guard-env.mjs codex", "timeout": 10 }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node scripts/agent-log-hook.mjs codex", "timeout": 10 }
+        ]
+      }
+    ]
+  }
 }
