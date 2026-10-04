@@ -32,6 +32,7 @@ export default function HomePage() {
       >
         {TASK_HINT}
       </p>
+      <p><a href="/api/health">Стан сервісу</a></p>
     </main>
   );
 }

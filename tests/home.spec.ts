@@ -6,6 +6,7 @@ test('головна сторінка показує назву курсу та 
   await expect(page.getByRole('heading', { name: 'Агентна інженерія' })).toBeVisible();
   await expect(page.getByText('Стартовий шаблон')).toBeVisible();
   await expect(page.getByText('Ваше завдання: додати ендпоінт /api/health')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Стан сервісу' })).toHaveAttribute('href', '/api/health');
 
   // Скріншот як доказ: лишається артефактом у test-results/.
   const screenshotPath = testInfo.outputPath('home.png');
