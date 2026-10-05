@@ -1,1 +1,3 @@
-export async function GET() { return new Response(JSON.stringify({ status: 'ok' })); }
+export async function GET() {
+  return Response.json({ status: 'ok', timestamp: new Date().toISOString() });
+}
